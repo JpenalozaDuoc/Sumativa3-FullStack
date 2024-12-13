@@ -1,3 +1,5 @@
+
+<!--
 <div class="container mt-4">
 <header>
   <div>
@@ -5,8 +7,9 @@
     <h1 class="h3"> Gestor de Usuarios en Angular</h1>
   </div>
 </header>
-
+-->
 <!-- Crear Usuario -->
+<!--
 <div class="card mb-4">
   <div class="card-body">
     <h4 class="card-title">Crear Nuevo Usuario</h4>
@@ -17,7 +20,9 @@
     <button class="btn btn-primary btn-lg" (click)="createUsuario({ id: 0, userName: newUsuarioName,passUser: newPassUser, userRol: newUserRol, userState: newUserState })">Crear Usuario</button>
   </div>
 </div>
+-->
 <!-- Actualizar Usuario -->
+<!--
 <div class="card mb-4">
   <div class="card-body">
     <h4 class="card-title">Actualizar Usuario</h4>
@@ -29,7 +34,9 @@
     <button *ngIf="updateId !== null" class="btn btn-warning btn-lg" (click)="updateUsuario(updateId, { id: updateId, userName: updateName, passUser:updatePass, userRol:updateRol,userState:updateState })">Actualizar Usuario</button>
   </div>
 </div>
+-->
 <!-- Eliminar Usuario -->
+<!--
 <div class="card mb-4">
   <div class="card-body">
     <h4 class="card-title">Eliminar Usuario</h4>
@@ -37,8 +44,9 @@
     <button *ngIf="deleteId !== null" class="btn btn-danger btn-lg" (click)="deleteUsuario(deleteId)">Eliminar Usuario</button>
   </div>
 </div>
-
+-->
 <!-- Obtener Usuario por ID -->
+<!--
 <div class="card mb-4">
   <div class="card-body">
     <h4 class="card-title">Obtener Usuario por ID</h4>
@@ -46,8 +54,9 @@
     <button *ngIf="searchId !== null" class="btn btn-info btn-lg" (click)="getUsuariosById(searchId)">Obtener Usuario</button>
   </div>
 </div>
-
+-->
 <!-- Mostrar al Usuario encontrado -->
+<!--
 <div *ngIf="foundUsuario" class="alert alert-success mb-4">
   <h4>Usuario Encontrada</h4>
   <p><strong>ID:</strong> {{ foundUsuario.id }}</p>
@@ -56,11 +65,15 @@
   <p><strong>Rol:</strong> {{ foundUsuario.userRol }}</p>
   <p><strong>Estado:</strong> {{ foundUsuario.userState }}</p>
 </div>
+-->
 <!-- Mostrar mensaje si no se encuentra la Usuario -->
+<!--
 <div *ngIf="foundUsuario === null && searchId !== null" class="alert alert-danger mb-4">
   <p>No se encontró ningún Usuario con ese ID.</p>
 </div>
+-->
 <!-- Lista de Usuarios -->
+<!--
 <h2 class="mb-4">Lista de Usuarios</h2>
 <table class="table table-bordered table-striped">
 <thead class="thead-dark">
@@ -82,9 +95,12 @@
   </tr>
 </tbody>
 </table>
+-->
 <!-- Footer -->
-<footer class="mt-4 p-3 text-center border-top">
+<!--<footer class="mt-4 p-3 text-center border-top">
   <p class="mb-0">© 2024 Todos los derechos reservados.</p>
 </footer>
 
 </div>
+-->
+<router-outlet />

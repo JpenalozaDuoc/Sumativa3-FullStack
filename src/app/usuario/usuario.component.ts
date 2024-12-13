@@ -1,24 +1,21 @@
-//import { Component, OnInit } from '@angular/core';
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-//import { HttpClient } from '@angular/common/http';
-//import { Observable } from 'rxjs';
-//import { FormsModule } from '@angular/forms';
-//import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-usuario',
   standalone: true,
-  //imports: [CommonModule,FormsModule], 
-  imports: [RouterOutlet], 
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [CommonModule,FormsModule],
+  templateUrl: './usuario.component.html',
+  styleUrl: './usuario.component.css'
 })
-//export class AppComponent implements OnInit{
-export class AppComponent{
+export class UsuarioComponent implements OnInit{
   title = 'tienda-app';
- /* usuarios: {id: number,userName: string, passUser: string, userRol: string, userState: string}[]=[];
+  usuarios: {id: number,userName: string, passUser: string, userRol: string, userState: string}[]=[];
 
   //Variables para los Formularios
 
@@ -65,6 +62,7 @@ export class AppComponent{
         next:(data)=>{
           console.log('Usuario Obtenido',data);
           this.foundUsuario = data;
+          //this.resetFields(); // Limpiar los campos
         },
         error:(err) =>{
           console.error('Error al obtener el Usuario por id:',err);
@@ -83,6 +81,7 @@ export class AppComponent{
         next:(data)=>{
           console.log('Usuario Creado',data);
           this.getUsuarios();
+          this.resetFields(); // Limpiar los campos
         },
         error:(err) =>{
           console.error('Error al crear Usuario:',err);
@@ -99,6 +98,7 @@ export class AppComponent{
         next:(data)=>{
           console.log('Usuario Actualizado',data);
           this.getUsuarios();
+          this.resetFields(); // Limpiar los campos
         },
         error:(err) =>{
           console.error('Error al actualizar Usuario:',err);
@@ -115,6 +115,7 @@ export class AppComponent{
         next:()=>{
           console.log('Usuario Eliminado');
           this.getUsuarios();
+          this.resetFields(); // Limpiar los campos
         },
         error:(err) =>{
           console.error('Error al eliminar al Usuario:',err);
@@ -125,5 +126,26 @@ export class AppComponent{
     }
   }
 
-*/
+  //Resetea los camos
+
+  resetFields() {
+    // Restablecer todos los campos del formulario a sus valores iniciales
+    this.newUsuarioName = '';
+    this.newPassUser = '';
+    this.newUserRol = '';
+    this.newUserState = '';
+  
+    this.updateId = null;
+    this.updateName = '';
+    this.updatePass = '';
+    this.updateRol = '';
+    this.updateState = '';
+  
+    this.deleteId = null;
+    this.searchId = null;
+    this.foundUsuario = null;
+  }
+
+
+
 }

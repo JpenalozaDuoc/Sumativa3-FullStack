@@ -1,0 +1,112 @@
+<div class="container mt-4">
+  <header>
+      <div class="d-flex align-items-center">
+          <img src="assets/pngwing.com.png" alt="logo" class="mr-3" style="width: 50px; height: auto;" />
+          <h1 class="h3">Gestor de Usuarios en Angular</h1>
+      </div>
+  </header>
+
+  <!-- Filas de formularios, adaptados a pantallas pequeñas y grandes -->
+  <div class="row">
+      <!-- Crear Usuario -->
+      <div class="col-12 col-md-6 mb-4">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title">Crear Nuevo Usuario</h4>
+                  <input type="text" [(ngModel)]="newUsuarioName" placeholder="Nombre de Usuario" class="form-control mb-2" />
+                  <input type="text" [(ngModel)]="newPassUser" placeholder="Contraseña" class="form-control mb-2" />
+                  <input type="text" [(ngModel)]="newUserRol" placeholder="Rol de Usuario" class="form-control mb-2" />
+                  <input type="text" [(ngModel)]="newUserState" placeholder="Estado de Usuario" class="form-control mb-2" />
+                  <button class="btn btn-primary btn-lg w-100" (click)="createUsuario({ id: 0, userName: newUsuarioName, passUser: newPassUser, userRol: newUserRol, userState: newUserState })">Crear Usuario</button>
+              </div>
+          </div>
+      </div>
+
+      <!-- Actualizar Usuario -->
+      <div class="col-12 col-md-6 mb-4">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title">Actualizar Usuario</h4>
+                  <input type="number" [(ngModel)]="updateId" placeholder="ID del Usuario" class="form-control mb-2" />
+                  <input type="text" [(ngModel)]="updateName" placeholder="Nuevo Nombre" class="form-control mb-2" />
+                  <input type="text" [(ngModel)]="updatePass" placeholder="Nueva Contraseña" class="form-control mb-2" />
+                  <input type="text" [(ngModel)]="updateRol" placeholder="Nuevo Rol" class="form-control mb-2" />
+                  <input type="text" [(ngModel)]="updateState" placeholder="Nuevo Estado" class="form-control mb-2" />
+                  <button *ngIf="updateId !== null" class="btn btn-warning btn-lg w-100" (click)="updateUsuario(updateId, { id: updateId, userName: updateName, passUser: updatePass, userRol: updateRol, userState: updateState })">Actualizar Usuario</button>
+              </div>
+          </div>
+      </div>
+
+      <!-- Eliminar Usuario -->
+      <div class="col-12 col-md-6 mb-4">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title">Eliminar Usuario</h4>
+                  <input type="number" [(ngModel)]="deleteId" placeholder="ID del Usuario" class="form-control mb-2" />
+                  <button *ngIf="deleteId !== null" class="btn btn-danger btn-lg w-100" (click)="deleteUsuario(deleteId)">Eliminar Usuario</button>
+              </div>
+          </div>
+      </div>
+
+      <!-- Obtener Usuario por ID -->
+      <div class="col-12 col-md-6 mb-4">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title">Obtener Usuario por ID</h4>
+                  <input type="number" [(ngModel)]="searchId" placeholder="ID del Usuario" class="form-control mb-2" />
+                  <button *ngIf="searchId !== null" class="btn btn-info btn-lg w-100" (click)="getUsuariosById(searchId)">Obtener Usuario</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Mostrar al Usuario encontrado -->
+  <div *ngIf="foundUsuario" class="alert alert-success mb-4">
+      <h4>Usuario Encontrado</h4>
+      <p><strong>ID:</strong> {{ foundUsuario.id }}</p>
+      <p><strong>Nombre de Usuario:</strong> {{ foundUsuario.userName }}</p>
+      <p><strong>Contraseña:</strong> {{ foundUsuario.passUser }}</p>
+      <p><strong>Rol:</strong> {{ foundUsuario.userRol }}</p>
+      <p><strong>Estado:</strong> {{ foundUsuario.userState }}</p>
+  </div>
+
+  <!-- Mostrar mensaje si no se encuentra el Usuario -->
+  <div *ngIf="foundUsuario === null && searchId !== null" class="alert alert-danger mb-4">
+      <p>No se encontró ningún Usuario con ese ID.</p>
+  </div>
+
+  <!-- Lista de Usuarios -->
+  <h2 class="mb-4">Lista de Usuarios</h2>
+  <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col">ID</th>
+              <th scope="col">USERNAME</th>
+              <th scope="col">PASSUSER</th>
+              <th scope="col">USERROL</th>
+              <th scope="col">USERSTATE</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let usuario of usuarios">
+              <td>{{ usuario.id }}</td>
+              <td>{{ usuario.userName }}</td>
+              <td>{{ usuario.passUser }}</td>
+              <td>{{ usuario.userRol }}</td>
+              <td>{{ usuario.userState }}</td>
+          </tr>
+      </tbody>
+  </table>
+
+   <!-- Botón Volver -->
+   <div class="text-center mb-4">
+    <button class="btn btn-secondary btn-lg">
+      <a href="/home" class="text-decoration-none text-info fw-semibold">Volver</a>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-4 p-3 text-center border-top">
+      <p class="mb-0">© 2024 Todos los derechos reservados.</p>
+  </footer>
+</div>

@@ -1,0 +1,102 @@
+<div class="container mt-4">
+  <header>
+    <div class="d-flex align-items-center">
+      <img src="assets/iconoproductos.png" alt="logo" class="mr-3" style="width:  50px; height: auto;"/>
+      <h1 class="h3">Gestor de Productos en Angular</h1>
+    </div>
+  </header>
+
+  <!-- Filas de formularios, adaptados a pantallas pequeñas y grandes -->
+  <div class="row">
+    <!-- Crear Producto -->
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Crear Nuevo Producto</h4>
+          <input type="text" [(ngModel)]="newNameProduct" placeholder="Nombre del Producto" class="form-control mb-2" />
+          <input type="text" [(ngModel)]="newPrecio" placeholder="Precio" class="form-control mb-2" />
+          <button  *ngIf="newNameProduct && newPrecio" class="btn btn-primary btn-lg w-100" (click)="createProducto({ idProd: 0, nomProducto:newNameProduct, precioCompra: newPrecio })">Crear Producto</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actualizar Producto -->
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Actualizar Producto</h4>
+          <input type="number" [(ngModel)]="updateId" placeholder="ID del Producto" class="form-control mb-2" />
+          <input type="text" [(ngModel)]="updateName" placeholder="Nuevo Precio" class="form-control mb-2" />
+          <input type="text" [(ngModel)]="updatePrecio" placeholder="Nuevo" class="form-control mb-2" />
+          <button *ngIf="updateId !== null" class="btn btn-warning btn-lg w-100" (click)="updateProducto(updateId, { idProd: updateId, nomProducto: updateName, precioCompra:updatePrecio })">Actualizar Producto</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eliminar Producto -->
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Eliminar Producto</h4>
+          <input type="number" [(ngModel)]="deleteId" placeholder="ID del Producto" class="form-control mb-2" />
+          <button *ngIf="deleteId !== null" class="btn btn-danger btn-lg w-100" (click)="deleteProducto(deleteId)">Eliminar Producto</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Obtener Producto por ID -->
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Obtener Producto por ID</h4>
+          <input type="number" [(ngModel)]="searchID" placeholder="ID del Producto" class="form-control mb-2" />
+          <button *ngIf="searchID !== null" class="btn btn-info btn-lg w-100" (click)="getProductoById(searchID)">Obtener Producto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mostrar al Producto encontrado -->
+  <div *ngIf="foudProduct" class="alert alert-success mb-4">
+    <h4>Producto Encontrado</h4>
+    <p><strong>ID:</strong> {{ foudProduct.idProd }}</p>
+    <p><strong>Nombre:</strong> {{ foudProduct.nomProducto }}</p>
+    <p><strong>Precio:</strong> {{ foudProduct.precioCompra }}</p>
+  </div>
+
+  <!-- Mostrar mensaje si no se encuentra el Producto -->
+  <div *ngIf="foudProduct === null && searchID !== null" class="alert alert-danger mb-4">
+    <p>No se encontró ningún Producto con ese ID.</p>
+  </div>
+
+  <!-- Lista de Productos -->
+  <h2 class="mb-4">Lista de Productos</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">PRODUCTO</th>
+        <th scope="col">PRECIO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.idProd }}</td>
+        <td>{{ producto.nomProducto }}</td>
+        <td>{{ producto.precioCompra }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Botón Volver -->
+  <div class="text-center mb-4">
+    <button class="btn btn-secondary btn-lg">
+      <a href="/home" class="text-decoration-none text-info fw-semibold">Volver</a>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-4 p-3 text-center border-top">
+    <p class="mb-0">© 2024 Todos los derechos reservados.</p>
+  </footer>
+</div>

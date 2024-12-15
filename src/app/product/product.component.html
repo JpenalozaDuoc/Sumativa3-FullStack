@@ -26,8 +26,8 @@
         <div class="card-body">
           <h4 class="card-title">Actualizar Producto</h4>
           <input type="number" [(ngModel)]="updateId" placeholder="ID del Producto" class="form-control mb-2" />
-          <input type="text" [(ngModel)]="updateName" placeholder="Nuevo Precio" class="form-control mb-2" />
-          <input type="text" [(ngModel)]="updatePrecio" placeholder="Nuevo" class="form-control mb-2" />
+          <input type="text" [(ngModel)]="updateName" placeholder="Nuevo Nombre" class="form-control mb-2" />
+          <input type="text" [(ngModel)]="updatePrecio" placeholder="Nuevo Precio" class="form-control mb-2" />
           <button *ngIf="updateId !== null" class="btn btn-warning btn-lg w-100" (click)="updateProducto(updateId, { idProd: updateId, nomProducto: updateName, precioCompra:updatePrecio })">Actualizar Producto</button>
         </div>
       </div>

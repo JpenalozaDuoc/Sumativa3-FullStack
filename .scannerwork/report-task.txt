@@ -1,6 +1,6 @@
-projectKey=FrontEnd-Angular
+projectKey=EFT_Semana9_Fullstack3
 serverUrl=http://127.0.0.1:9000
 serverVersion=24.12.0.100206
-dashboardUrl=http://127.0.0.1:9000/dashboard?id=FrontEnd-Angular
-ceTaskId=3e12839a-1418-4586-a42b-15ac3e6f5087
-ceTaskUrl=http://127.0.0.1:9000/api/ce/task?id=3e12839a-1418-4586-a42b-15ac3e6f5087
+dashboardUrl=http://127.0.0.1:9000/dashboard?id=EFT_Semana9_Fullstack3
+ceTaskId=d89445e3-a5b9-43fe-94db-0d2819c96ffc
+ceTaskUrl=http://127.0.0.1:9000/api/ce/task?id=d89445e3-a5b9-43fe-94db-0d2819c96ffc

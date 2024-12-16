@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HomeComponent } from './home.component';
 import { By } from '@angular/platform-browser';
-import { RouterTestingModule } from '@angular/router/testing';  // Para simular la navegación de rutas
+import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -9,7 +8,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeComponent, RouterTestingModule],  // Importamos RouterTestingModule para pruebas de navegación
+      //declarations: [HomeComponent],
+      imports: [HomeComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
@@ -21,45 +21,43 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render the "Usuarios" card with correct details', () => {
-    const usuarioCardTitle = fixture.debugElement.query(By.css('.card-title')).nativeElement;
-    expect(usuarioCardTitle.textContent).toContain('Usuarios');
+  it('should render Usuarios section with correct title, description, and button', () => {
+    const usuariosCard = fixture.debugElement.query(By.css('.col-md-6:nth-child(1)'));
+    const usuariosImg = usuariosCard.query(By.css('img')).nativeElement;
+    const usuariosTitle = usuariosCard.query(By.css('h4')).nativeElement;
+    const usuariosText = usuariosCard.query(By.css('p')).nativeElement;
+    const usuariosButton = usuariosCard.query(By.css('a')).nativeElement;
 
-    const usuarioCardText = fixture.debugElement.query(By.css('.card-text')).nativeElement;
-    expect(usuarioCardText.textContent).toContain('Gestiona los usuarios del sistema');
-
-    const usuarioButton = fixture.debugElement.query(By.css('.btn-primary a[href="/usuario"]')).nativeElement;
-    expect(usuarioButton.textContent.trim()).toBe('Ir a Usuarios');
+    expect(usuariosImg.src).toContain('assets/usuario.png');
+    expect(usuariosTitle.textContent).toBe('Usuarios');
+    expect(usuariosText.textContent).toBe('Gestiona los usuarios del sistema');
+    expect(usuariosButton.getAttribute('href')).toBe('/usuario');
+    expect(usuariosButton.textContent).toBe('Ir a Usuarios');
   });
 
-  it('should render the "Productos" card with correct details', () => {
-    const productCardTitle = fixture.debugElement.queryAll(By.css('.card-title'))[1].nativeElement;
-    expect(productCardTitle.textContent).toContain('Productos');
+  it('should render Productos section with correct title, description, and button', () => {
+    const productosCard = fixture.debugElement.query(By.css('.col-md-6:nth-child(2)'));
+    const productosImg = productosCard.query(By.css('img')).nativeElement;
+    const productosTitle = productosCard.query(By.css('h4')).nativeElement;
+    const productosText = productosCard.query(By.css('p')).nativeElement;
+    const productosButton = productosCard.query(By.css('a')).nativeElement;
 
-    const productCardText = fixture.debugElement.queryAll(By.css('.card-text'))[1].nativeElement;
-    expect(productCardText.textContent).toContain('Gestiona los productos del sistema');
-
-    const productButton = fixture.debugElement.query(By.css('.btn-primary a[href="/product"]')).nativeElement;
-    expect(productButton.textContent.trim()).toBe('Ir a Productos');
+    expect(productosImg.src).toContain('assets/products.png');
+    expect(productosTitle.textContent).toBe('Productos');
+    expect(productosText.textContent).toBe('Gestiona los productos del sistema');
+    expect(productosButton.getAttribute('href')).toBe('/product');
+    expect(productosButton.textContent).toBe('Ir a Productos');
   });
 
-  // Prueba para la navegación: verificar si se redirige a /usuario
-  it('should navigate to the Usuario page when the "Usuarios" button is clicked', async () => {
-    const usuarioButton = fixture.debugElement.query(By.css('.btn-primary a[href="/usuario"]')).nativeElement;
-    usuarioButton.click();
-    
-    fixture.whenStable().then(() => {
-      expect(window.location.pathname).toBe('/usuario');  // Requiere que simules la navegación
-    });
-  });
+  it('should render three additional images below the sections', () => {
+    const images = fixture.debugElement.queryAll(By.css('.row.mt-4 img'));
 
-  // Prueba para la navegación: verificar si se redirige a /product
-  it('should navigate to the Product page when the "Productos" button is clicked', async () => {
-    const productButton = fixture.debugElement.query(By.css('.btn-primary a[href="/product"]')).nativeElement;
-    productButton.click();
-    
-    fixture.whenStable().then(() => {
-      expect(window.location.pathname).toBe('/product');  // Requiere que simules la navegación
-    });
+    expect(images.length).toBe(3);
+    expect(images[0].nativeElement.src).toContain('assets/pig_iron.jpeg');
+    expect(images[0].nativeElement.alt).toBe('Imagen uno');
+    expect(images[1].nativeElement.src).toContain('assets/pig_thor.jpeg');
+    expect(images[1].nativeElement.alt).toBe('Imagen dos');
+    expect(images[2].nativeElement.src).toContain('assets/pig_hammer.jpeg');
+    expect(images[2].nativeElement.alt).toBe('Imagen tres');
   });
 });

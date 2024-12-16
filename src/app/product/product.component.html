@@ -14,7 +14,7 @@
         <div class="card-body">
           <h4 class="card-title">Crear Nuevo Producto</h4>
           <input type="text" [(ngModel)]="newNameProduct" placeholder="Nombre del Producto" class="form-control mb-2" />
-          <input type="text" [(ngModel)]="newPrecio" placeholder="Precio" class="form-control mb-2" />
+          <input type="text" [(ngModel)]="newPrecio" placeholder="Precio" type="number" class="form-control mb-2" />
           <button  *ngIf="newNameProduct && newPrecio" class="btn btn-primary btn-lg w-100" (click)="createProducto({ idProd: 0, nomProducto:newNameProduct, precioCompra: newPrecio })">Crear Producto</button>
         </div>
       </div>
